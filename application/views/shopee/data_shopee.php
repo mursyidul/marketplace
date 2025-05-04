@@ -71,11 +71,11 @@
                             <thead>
                                 <tr>
                                     <th width="5%">No</th>
-                                    <th width="25%">Nama</th>
+                                    <th width="20%">Nama</th>
                                     <th width="25%">Nama Table</th>
                                     <th width="30%">Keterangan</th>
                                     <?php if ($this->session->userdata('role') == "SUPERADMIN") { ?>
-                                        <th width="15%"><center>Aksi</center></th>
+                                        <th width="20%"><center>Aksi</center></th>
                                     <?php } ?>
                                 </tr>
                             </thead>
@@ -90,7 +90,8 @@
                                         <?php if ($this->session->userdata('role') == "SUPERADMIN") { ?>
                                             <td>
                                                 <center> 
-                                                    <a href="#" class="text-reset fs-16 px-1" data-bs-toggle="modal" id="btn_edit_select" data-bs-target="#standard-modal_edit<?php echo $k['id']; ?>" data-id="<?=$k['id'];?>"> <i class="ri-edit-2-fill"></i></a>
+                                                    <a href="#" class="text-reset fs-16 px-1" data-bs-toggle="modal" id="btn_edit_select" data-bs-target="#standard-modal_edit<?php echo $k['id']; ?>" data-id="<?=$k['id'];?>"> <i class="ri-edit-2-fill"></i></a>&nbsp;
+                                                    <a href="<?php echo base_url('shopee/mapping/'.$k['id']); ?>" class="text-reset fs-16 px-1"> <i class="ri-list-settings-line"></i></a>
                                                 </center>
                                             </td>
                                         <?php } ?>
