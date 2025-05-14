@@ -167,13 +167,38 @@
                 </a>
             </li>
             <?php if($this->session->userdata('role') == 'SUPERADMIN'){ ?>
+                <li <?php if($menu == "performa" || $menu == "tiktok"){ echo "class='side-nav-item menuitem-active'"; } ?> >
+                    <a data-bs-toggle="collapse" href="#sidebarMultiLevel" aria-expanded="false" aria-controls="sidebarMultiLevel" class="side-nav-link">
+                        <i class="ri-database-2-line"></i>
+                        <span> Data </span>
+                        <span class="menu-arrow"></span>
+                    </a>
+                    <div class="collapse" id="sidebarMultiLevel">
+                        <ul class="side-nav-second-level">
+                            <li class="side-nav-item">
+                                <a data-bs-toggle="collapse" href="#sidebarSecondLevel" aria-expanded="false" aria-controls="sidebarSecondLevel">
+                                    <span> Shopee </span>
+                                    <span class="menu-arrow"></span>
+                                </a>
+                                <div class="collapse" id="sidebarSecondLevel">
+                                    <ul class="side-nav-third-level">
+                                        <li <?php if($menu == "performa"){ echo "class='side-nav-item'";} ?>>
+                                            <a href="<?php echo base_url('performa') ?>"> Data Performa</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+
                 <li <?php if($menu == "shopee" || $menu == "tiktok"){ echo "class='side-nav-item menuitem-active'"; } ?> class="side-nav-item">
-                <a data-bs-toggle="collapse" href="#sidebar_limbah" aria-expanded="false" aria-controls="sidebar_limbah" class="side-nav-link">
-                    <i class="ri-luggage-cart-line"></i>
-                    <span> Marketplace </span>
+                <a data-bs-toggle="collapse" href="#setting" aria-expanded="false" aria-controls="setting" class="side-nav-link">
+                    <i class="ri-settings-3-line"></i>
+                    <span> Setting </span>
                     <span class="menu-arrow"></span>
                 </a>
-                    <div class="collapse" id="sidebar_limbah">
+                    <div class="collapse" id="setting">
                         <ul class="side-nav-second-level">
                             <li <?php if($menu == "shopee"){ echo "class='side-nav-item'";} ?>><a href="<?php echo base_url('shopee') ?>"> Shopee</a></li>
                             <li <?php if($menu == "tiktok"){ echo "class='side-nav-item'";} ?>><a href="<?php echo base_url('tiktok') ?>">Tik Tok</a></li>

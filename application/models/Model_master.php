@@ -93,4 +93,9 @@ class Model_master extends CI_Model
             return false;
         }
     }
+
+    public function insert_all($table, $data)
+    {
+        return $this->db->insert_batch($table, $data);
+    }
 }

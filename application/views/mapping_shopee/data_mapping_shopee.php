@@ -62,8 +62,9 @@
                         <div class="row">
                             <div class="col-lg-6">
                                 <?php if ($this->session->userdata('role') == "SUPERADMIN") { ?>
-                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#standard-modal" style="margin-top: 29px; width: 130px;"><i class="bi bi-plus-lg"></i> Tambah Data</button>&nbsp;
                                     <?php if($table->status != "1"){ ?>
+                                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#standard-modal" style="margin-top: 29px; width: 130px;"><i class="bi bi-plus-lg"></i> Tambah Data</button>&nbsp;
+                                    
                                         <button type="button" class="btn btn-primary" id="btn_approve" data-id="<?=$table->id;?>" style="margin-top: 29px; width: 200px;"><i class="ri-check-line"></i> Tambah Table Database</button>
                                     <?php } ?>
                                 <?php } ?>
@@ -71,32 +72,11 @@
                         </div>
                     </form>
                     <br>
-
-                    <!-- <?php 
-                        $columns = [
-                            ['name' => 'id', 'type' => 'INT', 'unsigned' => true, 'auto_increment' => true],
-                            ['name' => 'name', 'type' => 'VARCHAR', 'constraint' => '100'],
-                            ['name' => 'price', 'type' => 'DECIMAL', 'constraint' => '10,2'],
-                            ['name' => 'stock', 'type' => 'INT', 'constraint' => 11],
-                            ['name' => 'created_at', 'type' => 'DATETIME', 'null' => true],
-                        ];
-
-                        $fields = [];
-
-                        foreach ($columns as $col) {
-                            $fieldName = $col['name'];
-                            unset($col['name']); // hapus nama kolom dari definisi field
-                            $fields[$fieldName] = $col;
-                        }
-
-                        echo "<pre>", print_r($fields, 1), "</pre>";
-                    ?> -->
-                    <!-- <?php echo "<pre>", print_r($mapping, 1), "</pre>"; ?> -->
                         <table id="scroll-horizontal-datatable" class="table table-striped w-100 nowrap">
                             <thead>
                                 <tr>
                                     <th width="5%">No</th>
-                                    <th width="22%">Kolom Tabel</th>
+                                    <th width="22%">Kolom Table</th>
                                     <th width="17%">Type</th>
                                     <th width="12%">Length</th>
                                     <th width="9%">Default</th>
@@ -175,15 +155,27 @@
                         </div>
                         <div class="mb-1">
                             <label for="simpleinput" class="form-label">Default</label>
-                            <input type="text" class="form-control" name="null" required>
+                            <select class="form-control select2" data-toggle="select2" name="null" required>
+                                <option value="">Pilih Default</option>
+                                <option value="TRUE">TRUE</option>
+                                <option value="FALSE">FALSE</option>
+                            </select>
                         </div>
                         <div class="mb-1">
                             <label for="simpleinput" class="form-label">Auto Increment</label>
-                            <input type="text" class="form-control" name="auto_increment" required>
+                            <select class="form-control select2" data-toggle="select2" name="auto_increment" required>
+                                <option value="">Pilih Auto Increment</option>
+                                <option value="TRUE">TRUE</option>
+                                <option value="FALSE">FALSE</option>
+                            </select>
                         </div>
                         <div class="mb-1">
                             <label for="simpleinput" class="form-label">Unsigned</label>
-                            <input type="text" class="form-control" name="unsigned" required>
+                            <select class="form-control select2" data-toggle="select2" name="unsigned" required>
+                                <option value="">Pilih Unsigned</option>
+                                <option value="TRUE">TRUE</option>
+                                <option value="FALSE">FALSE</option>
+                            </select>
                         </div>
                     <div class="float-end">
                         <button type="button" class="btn btn-light" data-bs-dismiss="modal" style="width: 80px;">Batal</button>
@@ -246,7 +238,7 @@
     $(document).on("click", "#btn_approve", function(e){
         var id = $(this).data("id");
         swal({
-            title: "Apakah anda yakin ingin approve data ini ?",
+            title: "Apakah anda yakin ingin tambah table database ini ?",
             // text: "Data tidak dapat dikembalikan",
             type: "info",
             showCancelButton: true,

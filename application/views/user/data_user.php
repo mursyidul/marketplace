@@ -59,28 +59,8 @@
 
                     <form method="get" action="">
                         <div class="row">
-                            <div class="col-lg-2">
-                                <div class="mb-1 position-relative">
-                                    <label for="simpleinput" class="form-label">Status</label>
-                                    <select class="form-control select_atas" name="status">
-                                        <option value="">Pilih Status</option>
-                                        <option value="Active">Active</option>
-                                        <option value="Inactive">Inactive</option>
-                                    </select>
-                                </div>
-                            </div>
                             <div class="col-lg-6">
-                                <button type="submit" style="margin-top: 29px; width: 130px;" class="btn btn-success" ><i class="bi bi-search"></i> Search</button>&nbsp;
-                                <a style="margin-top: 29px; width: 130px;" href="<?php
-                                    $status      ="";
-                                    if(isset($_GET['status']) && ! empty($_GET['status'])){ 
-                                                $status     = $_GET['status'];
-                                        }
-                                        echo base_url("user/export?status=".$status."");
-                                    ?>" class="btn btn-info" data-toggle="tooltip"><i class="bi bi-file-excel"></i> Export Data</a>&nbsp;
-                                    <?php if ($this->session->userdata('role') == "SUPERADMIN" || $this->session->userdata('role') == "KEPALA BIDANG K3") { ?>
-                                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#standard-modal" style="margin-top: 29px; width: 130px;"><i class="bi bi-plus-lg"></i> Tambah Data</button>&nbsp;
-                                    <?php } ?>
+                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#standard-modal" style="margin-top: 29px; width: 130px;"><i class="bi bi-plus-lg"></i> Tambah Data</button>
                             </div>
                         </div>
                     </form>

@@ -108,9 +108,8 @@ class Shopee extends CI_Controller {
     {
         $id = $this->input->post('id');
 
-        $nama_table = $this->db->get_where('tbl_list_shopee',['id' => $id])->row();
         $data = $this->Model_shopee->get_kolom_table_shopee($id);
-        // echo "<pre>", print_r($data, 1), "</pre>";
+        // echo "<pre>", print_r($table->nama_table, 1), "</pre>";
 
         $fields = [];
         foreach ($data as $k) {
@@ -122,10 +121,11 @@ class Shopee extends CI_Controller {
         $this->dbforge->add_field($fields);
         // $this->dbforge->add_key($data[0]['kolom_table'], TRUE); // Primary key
 
+        $table = $this->db->get_where('tbl_list_shopee',['id' => $id])->row();
         // Buat tabel
-        if ($this->dbforge->create_table($nama_table->nama_table)) {
+        if ($this->dbforge->create_table($table->nama_table)) {
             $alter = "
-                ALTER TABLE ".$nama_table->nama_table." 
+                ALTER TABLE ".$table->nama_table." 
                 MODIFY ".$data[0]['kolom_table']." INT(11) UNSIGNED AUTO_INCREMENT PRIMARY KEY
             ";
 
@@ -133,12 +133,12 @@ class Shopee extends CI_Controller {
                 $this->db->set("status", "1");
                 $this->db->where("tbl_list_shopee.id", $id);
                 $this->db->update("tbl_list_shopee");
-                echo json_encode(array("status" => "success", "data" => $id, "message" => "Table ".$nama_table->nama_table." berhasil dibuat"));
+            echo json_encode(array("status" => "success", "data" => $id, "message" => "Table ".$table->nama_table." berhasil dibuat"));
             } else {
-                echo json_encode(array("status" => "error", "message" => "Gagal membuat tabel ".$nama_table->nama_table));
+                echo json_encode(array("status" => "error", "message" => "Gagal membuat tabel ".$table->nama_table));
             }
         } else {
-            echo json_encode(array("status" => "error", "message" => "Gagal membuat tabel ".$nama_table->nama_table));
+            echo json_encode(array("status" => "error", "message" => "Gagal membuat tabel ".$table->nama_table));
         }
     }
 
@@ -225,4 +225,7 @@ class Shopee extends CI_Controller {
     //         echo "Gagal membuat tabel 'orders'.";
     //     }
     // }
+
+
+    // password database marketplace hosting Iu0AIp^dG*@
 }

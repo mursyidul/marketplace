@@ -79,6 +79,7 @@
                                     <?php } ?>
                                 </tr>
                             </thead>
+                            <tbody>
                                 <?php $i = 1;
                                 foreach ($table as $k) { ?>
                                     <tr>
@@ -98,7 +99,6 @@
                                     </tr>
                                 <?php $i++;
                                 } ?>
-                            <tbody>
                                 
                             </tbody>
                         </table>
